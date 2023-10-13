@@ -9,10 +9,18 @@ namespace ScreenSound.Menus
     {
         public override void Executar(Dictionary<string, Banda> bandasRegistradas)
         {
-            Console.Clear();
-            Console.Write("\nO que voce está pensando? ");
+            base.Executar(bandasRegistradas);
+            ExibirTituloDaOpcao("Sobre a Banda");
+            Console.Write("Qual banda voce deseja saber mais? ");
             string textMessage = Console.ReadLine();
-            AuxMethod(textMessage);
+            if (bandasRegistradas.ContainsKey(textMessage))
+            {
+                AuxMethod(textMessage);
+            } else
+            {
+                Console.WriteLine($"\nA banda {textMessage} não foi encontrada!");
+                Console.WriteLine("Digite uma tecla para voltar ao menu principal");
+            }
             Console.ReadKey();
             Console.Clear();
         }
@@ -21,7 +29,7 @@ namespace ScreenSound.Menus
             var client = new OpenAIAPI("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");
 
             var chat = client.Chat.CreateConversation();
-            chat.AppendSystemMessage(textMessage);
+            chat.AppendSystemMessage($"Me fale um parágrafo sobre a banda {textMessage}. Use diálogo informal.");
             Console.WriteLine(await chat.GetResponseFromChatbotAsync());
             
         }

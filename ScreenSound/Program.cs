@@ -52,7 +52,7 @@ internal class Program
             Console.WriteLine("Digite 4 para avaliar uma banda");
             Console.WriteLine("Digite 5 para avaliar um album");
             Console.WriteLine("Digite 6 para exibir os detalhes de uma banda");
-            Console.WriteLine("Digite 7 para conversar com a Inteligencia Artificial");
+            Console.WriteLine("Digite 7 para saber mais sobre alguma banda");
             Console.WriteLine("Digite -1 para sair");
 
             Console.Write("\nDigite a sua opção: ");
